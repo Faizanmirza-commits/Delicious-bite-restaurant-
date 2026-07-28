@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delicious Bites - Best Restaurant in Pakpattan</title>
+
+<style>
+:root { --red: #D32F2F; --gold: #FFB300; --dark: #1a1a1a; --light: #fff8f0; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background: var(--light); color: var(--dark); }
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(211,47,47,0.5)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80') center/cover no-repeat;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px;
+}
+.hero h1 { font-size: 3.5rem; color: var(--gold); text-shadow: 2px 2px 4px #000; }
+.hero p { font-size: 1.5rem; margin: 10px 0; }
+.btn { background: var(--gold); color: var(--dark); padding: 14px 32px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; display: inline-block; }
+.btn:hover { background: var(--red); color: white; transform: scale(1.05); }
+section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+h2 { text-align: center; font-size: 2.5rem; color: var(--red); margin-bottom: 40px; }
+.about { text-align: center; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); padding: 40px; }
+.admin-login { text-align: center; margin-bottom: 30px; background: #fff; padding: 20px; border-radius: 10px; border: 2px dashed var(--gold); }
+.admin-login input { padding: 10px; border: 2px solid var(--red); border-radius: 8px; margin-right: 10px; }
+#adminPanel { display: none; background: #fff3cd; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+.admin-item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ddd; }
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+@media (max-width: 768px) {.menu-grid { grid-template-columns: 1fr; }.hero h1{font-size:2.5rem;} }
+.card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; position: relative; }
+.card img { width: 100%; height: 220px; object-fit: cover; }
+.card h3 { color: var(--red); margin: 15px 0 5px; }
+.card.price { font-size: 1.2rem; font-weight: bold; color: var(--gold); margin-bottom: 15px; }
+.card.order-btn { margin-bottom: 15px; }
+.card.out-of-stock img { filter: grayscale(100%) opacity(0.5); }
+.card.out-of-stock.order-btn { background: #ccc!important; cursor: not-allowed; pointer-events: none; }
+.badge { position: absolute; top: 10px; right: 10px; background: var(--red); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: none; }
+footer { background: var(--dark); color: white; padding: 40px 20px; text-align: center; }
+footer h3 { color: var(--gold); }
+.float-whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; }
+</style>
+
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Delicious Bites</h1>
+    <p>Taste That You Will Remember</p>
+    <p>Now Serving in Pakpattan</p>
+    <a href="#menu" class="btn" onclick="fbq('track', 'Lead')">Order Now</a>
+</section>
+
+<section class="about">
+    <h2>About Us</h2>
+    <p>Serving the best taste in Pakpattan since 2020. We bring you authentic flavors with a modern touch and 30 Minute Delivery in Pakpattan City.</p>
+</section>
+
+<section id="menu">
+    <h2>Our Special Menu</h2>
+    <div class="admin-login">
+        <input type="password" id="adminPass" placeholder="Enter Admin Password">
+        <button class="btn" onclick="adminLogin()">Admin Login</button>
+    </div>
+    <div id="adminPanel"><h3 style="text-align:center;">Admin Control Panel</h3><div id="adminList"></div></div>
+    <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<footer>
+    <h3>Contact Us</h3>
+    <p>Delicious Bites, Main Bazar, Pakpattan, Punjab, Pakistan</p>
+    <p><a href="https://wa.me/923106396034" onclick="fbq('track', 'Contact')" style="color:var(--gold);">WhatsApp: 0310-6396034</a></p>
+    <p style="color:var(--gold); font-weight:bold; margin:15px 0;">30 Minute Delivery Available in Pakpattan</p>
+    <div><a href="https://facebook.com" onclick="fbq('track', 'CompleteRegistration')" style="color:white; margin:0 10px;">FB</a><a href="https://instagram.com" onclick="fbq('track', 'CompleteRegistration')" style="color:white; margin:0 10px;">IG</a><a href="https://twitter.com" onclick="fbq('track', 'CompleteRegistration')" style="color:white; margin:0 10px;">TW</a></div>
+    <p style="margin-top:20px;">© 2026 Delicious Bites. All Rights Reserved.</p>
+</footer>
+
+<a href="https://wa.me/923106396034" class="float-whatsapp" onclick="fbq('track', 'Contact')">WA</a>
+
+<script>
+const ADMIN_PASSWORD = "12788312";
+const menuItems = [
+    { id: 1, name: "Falooda", price: 150, img: "https://images.unsplash.com/photo-1551024601-bec78aea5593?w=800&q=80" },
+    { id: 2, name: "Biryani", price: 350, img: "https://images.unsplash.com/photo-1631515242808-497c3fbd3972?w=800&q=80" },
+    { id: 3, name: "Pizza", price: 1400, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80" },
+    { id: 4, name: "Burger", price: 170, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80" },
+    { id: 5, name: "Rabri", price: 200, img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80" }
+];
+let stockStatus = JSON.parse(localStorage.getItem('stockStatus')) || {};
+
+function loadMenu() {
+    const menuGrid = document.getElementById('menuGrid');
+    menuGrid.innerHTML = '';
+    menuItems.forEach(item => {
+        const isOut = stockStatus[item.id];
+        const whatsappLink = `https://wa.me/923106396034?text=Hello%20I%20want%20to%20order%20${encodeURIComponent(item.name)}%20for%20Rs.%20${item.price}%20from%20Delicious%20Bites%20Pakpattan`;
+        menuGrid.innerHTML += `
+        <div class="card ${isOut? 'out-of-stock' : ''}">
+            <span class="badge" style="display:${isOut? 'block' : 'none'}">OUT OF STOCK</span>
+            <img src="${item.img}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p class="price">Rs. ${item.price}</p>
+            <a href="${isOut? '#' : whatsappLink}" class="btn order-btn" onclick="${isOut? 'return false;' : `fbq('track', 'AddToCart', {content_name: '${item.name}', value: ${item.price}, currency: 'PKR'}); fbq('track', 'InitiateCheckout');`}">
+               ${isOut? 'Unavailable' : 'Order Now'}
+            </a>
+        </div>`;
+    });
+}
+
+function adminLogin() {
+    if (document.getElementById('adminPass').value === ADMIN_PASSWORD) {
+        localStorage.setItem('isAdminLoggedIn', 'true');
+        document.getElementById('adminPanel').style.display = 'block';
+        loadAdminPanel();
+    } else { alert('Wrong Password!'); }
+}
+function loadAdminPanel() {
+    const adminList = document.getElementById('adminList'); adminList.innerHTML = '';
+    menuItems.forEach(item => {
+        const isOut = stockStatus[item.id];
+        adminList.innerHTML += `<div class="admin-item"><span>${item.name}</span><button onclick="toggleStock(${item.id})">${isOut? 'Mark In Stock' : 'Mark Out of Stock'}</button></div>`;
+    });
+}
+function toggleStock(id) {
+    stockStatus[id] =!stockStatus[id]; localStorage.setItem('stockStatus', JSON.stringify(stockStatus)); loadMenu(); loadAdminPanel();
+}
+if (localStorage.getItem('isAdminLoggedIn') === 'true') { document.getElementById('adminPanel').style.display = 'block'; loadAdminPanel(); }
+
+new IntersectionObserver((e)=>{if(e[0].isIntersecting){fbq('track', 'ViewContent');}}, {threshold: 0.5}).observe(document.getElementById('menu'));
+loadMenu();
+
+// FOR FUTURE: fbq('track', 'Purchase', {value: 0.00, currency: 'PKR'});
+</script>
+</body>
+</html>
