@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delicious Bites | Pakpattan</title>
+<meta name="description" content="Delicious Bites - Best Restaurant in Pakpattan. 30 Minute Delivery.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
+<!-- ================= META PIXEL BASE CODE ================= -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '884139820909324');
+fbq('track', 'PageView');
+
+/* ===== Add this on your Thank You page once you have one ==================
+fbq('track', 'Purchase', {value: 0.00, currency: 'PKR'});
+============================================================================ */
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=884139820909324&ev=PageView&noscript=1"/>
+</noscript>
+
+<style>
+  :root{
+    --red:#D32F2F;
+    --red-deep:#8E1616;
+    --gold:#FFB300;
+    --gold-soft:#FFD873;
+    --char:#221211;
+    --cream:#FFF8F0;
+    --line:rgba(34,18,17,.08);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--char);overflow-x:hidden;}
+
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+
+  ::selection{background:var(--gold);color:var(--char);}
+
+  /* ---------- utility ---------- */
+  .container{max-width:1180px;margin:auto;padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;letter-spacing:3px;text-transform:uppercase;
+    font-weight:600;color:var(--red);margin-bottom:14px;
+  }
+  .eyebrow::before{content:'';width:26px;height:2px;background:var(--gold);display:inline-block;}
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;top:0;left:0;width:100%;z-index:1000;
+    background:rgba(34,18,17,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+    transition:.3s;
+  }
+  nav{
+    max-width:1180px;margin:auto;display:flex;
+    justify-content:space-between;align-items:center;
+    padding:16px 24px;
+  }
+  .logo{
+    color:#fff;font-size:24px;font-weight:800;letter-spacing:.5px;
+    display:flex;align-items:baseline;gap:6px;
+  }
+  .logo span{color:var(--gold);font-size:28px;line-height:0;}
+  nav ul{display:flex;list-style:none;gap:36px;}
+  nav ul li a{
+    color:rgba(255,255,255,.85);text-decoration:none;font-weight:500;font-size:14.5px;
+    position:relative;padding-bottom:4px;
+  }
+  nav ul li a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:2px;
+    background:var(--gold);transition:.3s;
+  }
+  nav ul li a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--gold);color:var(--char);padding:10px 22px;border-radius:30px;
+    font-weight:600;font-size:14px;text-decoration:none;
+  }
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:#fff;}
+
+  @media(max-width:860px){
+    nav ul{
+      position:fixed;top:64px;left:0;width:100%;background:var(--char);
+      flex-direction:column;align-items:center;gap:0;
+      max-height:0;overflow:hidden;transition:.35s;
+    }
+    nav ul.open{max-height:400px;padding:10px 0;}
+    nav ul li{width:100%;text-align:center;}
+    nav ul li a{display:block;padding:14px 0;}
+    .nav-cta{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;align-items:center;overflow:hidden;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(255,179,0,.35) 0%, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(211,47,47,.4) 0%, transparent 50%),
+      linear-gradient(135deg, #221211 0%, #3a1512 55%, #5c1c1c 100%);
+    padding:140px 24px 100px;
+  }
+  .hero-pattern{
+    position:absolute;inset:0;z-index:0;opacity:.5;pointer-events:none;
+  }
+  .hero-inner{max-width:1180px;margin:auto;width:100%;color:#fff;position:relative;z-index:1;}
+  .hero-tag{
+    display:inline-block;font-size:13px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold-soft);font-weight:600;margin-bottom:22px;
+    border:1px solid rgba(255,216,115,.4);padding:8px 18px;border-radius:30px;
+  }
+  .hero h1{
+    font-size:clamp(42px,8vw,84px);font-weight:800;line-height:1.02;
+    margin-bottom:20px;letter-spacing:-1px;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--gold);
+  }
+  .hero p.tagline{
+    font-size:clamp(18px,2.4vw,26px);font-weight:500;color:#fff;margin-bottom:10px;
+  }
+  .hero p.subtag{
+    font-size:16px;color:rgba(255,255,255,.75);margin-bottom:40px;max-width:480px;
+  }
+  .hero-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center;}
+
+  .btn{
+    background:var(--gold);color:var(--char);
+    padding:17px 38px;text-decoration:none;border-radius:50px;
+    font-weight:700;font-size:15px;transition:.3s;display:inline-block;
+    border:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--gold-soft);transform:translateY(-3px);box-shadow:0 12px 24px rgba(255,179,0,.25);}
+  .btn-outline{
+    background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;
+    padding:16px 34px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;
+    transition:.3s;
+  }
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  .hero-stats{
+    display:flex;gap:46px;margin-top:70px;flex-wrap:wrap;
+  }
+  .hero-stats div strong{
+    display:block;font-size:30px;font-weight:800;color:var(--gold);
+  }
+  .hero-stats div span{font-size:13px;color:rgba(255,255,255,.65);letter-spacing:.5px;}
+
+  /* signature: skewer divider */
+  .skewer-divider{
+    height:54px;width:100%;
+    background:var(--cream);
+    position:relative;
+    margin-top:-2px;
+  }
+  .skewer-divider svg{display:block;width:100%;height:100%;}
+
+  /* ---------- about ---------- */
+  .about{padding:110px 0 90px;background:var(--cream);}
+  .about-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;
+  }
+  .about h2{
+    font-size:clamp(32px,4vw,46px);font-weight:800;margin-bottom:22px;line-height:1.1;
+  }
+  .about p{font-size:17px;line-height:1.85;color:#4a3a38;max-width:520px;}
+  .about-badge{
+    margin-top:32px;display:inline-flex;align-items:center;gap:14px;
+    background:#fff;border:1px solid var(--line);padding:14px 22px;border-radius:16px;
+    box-shadow:0 8px 24px rgba(34,18,17,.05);
+  }
+  .about-badge .num{font-size:26px;font-weight:800;color:var(--red);}
+  .about-badge .txt{font-size:13px;color:#6b5654;line-height:1.4;}
+
+  .about-visual{
+    position:relative;border-radius:24px;overflow:hidden;
+    aspect-ratio:4/5;
+    box-shadow:0 30px 60px rgba(34,18,17,.18);
+  }
+  .about-visual img{width:100%;height:100%;object-fit:cover;}
+  .about-visual::after{
+    content:'30 min delivery';
+    position:absolute;bottom:20px;left:20px;right:20px;
+    background:rgba(34,18,17,.85);backdrop-filter:blur(6px);
+    color:var(--gold-soft);font-weight:600;font-size:14px;letter-spacing:.5px;
+    padding:14px 18px;border-radius:12px;text-align:center;
+  }
+
+  @media(max-width:900px){
+    .about-grid{grid-template-columns:1fr;gap:44px;}
+    .about-visual{order:-1;max-width:420px;margin:auto;}
+  }
+
+  /* ---------- menu ---------- */
+  .menu{padding:100px 0 110px;background:#fff;position:relative;}
+  .menu-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .menu-head h2{font-size:clamp(32px,4.4vw,46px);font-weight:800;margin-bottom:14px;}
+  .menu-head p{color:#6b5654;font-size:16px;}
+
+  /* admin login */
+  .login-box{
+    max-width:440px;margin:0 auto 20px;background:var(--cream);
+    border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+    display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;
+  }
+  .login-box input{
+    flex:1;min-width:180px;padding:13px 16px;border:1px solid var(--line);
+    border-radius:10px;font-size:14px;background:#fff;
+  }
+  .login-box input:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .login-box button{
+    padding:13px 22px;background:var(--red);color:#fff;border:none;
+    border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;transition:.25s;
+  }
+  .login-box button:hover{background:var(--red-deep);}
+  .login-msg{
+    text-align:center;font-size:13px;font-weight:600;margin-bottom:30px;min-height:18px;
+  }
+  .login-msg.err{color:var(--red);}
+  .login-msg.ok{color:#1a7d3c;}
+
+  #adminPanel{
+    display:none;max-width:760px;margin:0 auto 50px;background:var(--cream);
+    padding:26px 28px;border-radius:18px;box-shadow:0 14px 34px rgba(34,18,17,.08);
+    border:1px solid var(--line);
+  }
+  #adminPanel h3{font-size:19px;margin-bottom:6px;}
+  #adminPanel .admin-sub{font-size:13px;color:#7a6462;margin-bottom:18px;}
+  .admin-item{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 6px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap;
+  }
+  .admin-item:last-child{border-bottom:none;}
+  .admin-item .ai-name{font-weight:600;}
+  .admin-item .ai-price{color:var(--red);font-weight:700;font-size:14px;margin-left:8px;}
+  .admin-item button{
+    background:var(--gold);border:none;padding:10px 18px;cursor:pointer;
+    font-weight:700;border-radius:8px;font-size:13px;transition:.25s;
+  }
+  .admin-item button.out{background:#333;color:#fff;}
+  .admin-logout{
+    margin-top:18px;background:transparent;border:1px solid var(--line);
+    padding:9px 18px;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;color:#6b5654;
+  }
+
+  .menu-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:30px;
+  }
+  .card{
+    background:#fff;border-radius:20px;overflow:hidden;
+    box-shadow:0 12px 30px rgba(34,18,17,.08);
+    position:relative;transition:.35s;border:1px solid var(--line);
+  }
+  .card:hover{transform:translateY(-8px);box-shadow:0 22px 44px rgba(34,18,17,.14);}
+  .card .img-wrap{position:relative;overflow:hidden;height:230px;display:flex;align-items:center;justify-content:center;}
+  .food-icon{width:150px;height:150px;transition:.5s;filter:drop-shadow(0 10px 18px rgba(0,0,0,.25));}
+  .card:hover .food-icon{transform:scale(1.08) rotate(-2deg);}
+  .card.out .food-icon{filter:grayscale(70%) brightness(.75);}
+  .card.out .img-wrap img{filter:grayscale(70%) brightness(.7);}
+
+  .badge{
+    position:absolute;top:14px;right:14px;background:var(--red);color:#fff;
+    padding:8px 14px;border-radius:30px;display:none;font-size:11.5px;font-weight:700;
+    letter-spacing:.5px;box-shadow:0 6px 14px rgba(211,47,47,.4);
+  }
+  .card.out .badge{display:block;}
+
+  .card-content{padding:22px 22px 24px;text-align:center;}
+  .card h3{font-size:20px;font-weight:700;margin-bottom:8px;}
+  .price{font-size:22px;font-weight:800;color:var(--red);margin-bottom:18px;}
+
+  .order-btn{
+    width:100%;background:var(--gold);padding:13px 20px;border:none;cursor:pointer;
+    font-weight:700;border-radius:30px;font-size:14.5px;transition:.25s;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .order-btn:hover{background:var(--gold-soft);}
+  .order-btn:disabled{background:#ddd;color:#888;cursor:not-allowed;}
+
+  @media(max-width:900px){
+    .menu-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- footer ---------- */
+  footer{background:var(--char);color:#fff;padding:80px 0 30px;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:50px;margin-bottom:60px;
+  }
+  .footer-grid h4{font-size:16px;margin-bottom:20px;color:var(--gold);letter-spacing:.5px;}
+  .footer-logo{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .footer-logo span{color:var(--gold);}
+  .footer-grid p{color:rgba(255,255,255,.65);font-size:14.5px;line-height:1.8;}
+  .footer-wa{
+    margin-top:20px;display:inline-flex;align-items:center;gap:10px;
+    background:#25D366;color:#fff;padding:12px 22px;border-radius:30px;
+    text-decoration:none;font-weight:600;font-size:14px;
+  }
+  .footer-links{list-style:none;}
+  .footer-links li{margin-bottom:12px;}
+  .footer-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:14.5px;}
+  .footer-links a:hover{color:var(--gold);}
+  .social-row{display:flex;gap:12px;margin-top:18px;}
+  .social-row a{
+    width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;text-decoration:none;
+    color:#fff;transition:.25s;
+  }
+  .social-row a:hover{background:var(--gold);border-color:var(--gold);color:var(--char);}
+  .delivery-strip{
+    text-align:center;font-size:13.5px;color:var(--gold-soft);font-weight:600;
+    padding:18px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);
+    letter-spacing:.5px;
+  }
+  .copyright{text-align:center;font-size:13px;color:rgba(255,255,255,.4);margin-top:24px;}
+
+  @media(max-width:800px){
+    .footer-grid{grid-template-columns:1fr;gap:36px;}
+  }
+
+  /* ---------- floating whatsapp ---------- */
+  .float-wa{
+    position:fixed;bottom:26px;right:26px;z-index:999;
+    width:60px;height:60px;background:#25D366;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 28px rgba(37,211,102,.5);text-decoration:none;
+  }
+  .float-wa svg{width:30px;height:30px;fill:#fff;}
+  .float-wa::before{
+    content:'';position:absolute;width:100%;height:100%;border-radius:50%;
+    background:#25D366;animation:pulse 2s infinite;z-index:-1;
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);opacity:.7;}
+    100%{transform:scale(1.9);opacity:0;}
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.8,.2,1);}
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span>&#9679;</span> Delicious Bites</div>
+    <ul id="navLinks">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+    <a href="#menu" class="nav-cta">Order Now</a>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <svg class="hero-pattern" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
+    <circle cx="680" cy="120" r="220" fill="#FFB300" opacity=".08"/>
+    <circle cx="60" cy="700" r="260" fill="#D32F2F" opacity=".12"/>
+    <g stroke="#FFB300" stroke-width="1.4" opacity=".2" fill="none">
+      <circle cx="680" cy="120" r="160"/><circle cx="680" cy="120" r="200"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <span class="hero-tag">Pakpattan's Favourite Kitchen</span>
+    <h1>Delicious <em>Bites</em></h1>
+    <p class="tagline">Taste That You Will Remember</p>
+    <p class="subtag">Now Serving in Pakpattan &mdash; fresh, hot, and delivered to your door in 30 minutes.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn" id="heroOrderBtn">Order Now</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>5+</strong><span>Signature Dishes</span></div>
+      <div><strong>30 min</strong><span>Delivery Time</span></div>
+      <div><strong>2020</strong><span>Serving Since</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="skewer-divider">
+  <svg viewBox="0 0 1200 54" preserveAspectRatio="none">
+    <path d="M0,54 L0,20 Q300,54 600,20 T1200,20 L1200,54 Z" fill="#FFF8F0"></path>
+  </svg>
+</div>
+
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="reveal">
+      <span class="eyebrow">About Us</span>
+      <h2>Cooked fresh, served with love, right here in Pakpattan.</h2>
+      <p>Serving the best taste in Pakpattan since 2020. We bring you authentic flavors with a modern touch and 30 Minute Delivery in Pakpattan City.</p>
+      <div class="about-badge">
+        <div class="num">4.9</div>
+        <div class="txt">Loved by regulars<br>across Pakpattan</div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <svg viewBox="0 0 400 500" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style="background:linear-gradient(160deg,#3a1512 0%,#8E1616 100%);">
+        <defs>
+          <radialGradient id="plateGlow" cx="50%" cy="45%" r="55%">
+            <stop offset="0%" stop-color="#FFE082"/><stop offset="100%" stop-color="#FFB300"/>
+          </radialGradient>
+        </defs>
+        <circle cx="200" cy="230" r="150" fill="url(#plateGlow)" opacity=".15"/>
+        <ellipse cx="200" cy="250" rx="140" ry="140" fill="#FFF8F0"/>
+        <ellipse cx="200" cy="250" rx="120" ry="120" fill="none" stroke="#FFB300" stroke-width="3" opacity=".5"/>
+        <ellipse cx="200" cy="250" rx="88" ry="88" fill="#D32F2F" opacity=".9"/>
+        <g fill="#FFF3E0">
+          <ellipse cx="170" cy="230" rx="8" ry="4" transform="rotate(20 170 230)"/>
+          <ellipse cx="210" cy="215" rx="8" ry="4" transform="rotate(-10 210 215)"/>
+          <ellipse cx="235" cy="245" rx="8" ry="4" transform="rotate(25 235 245)"/>
+          <ellipse cx="185" cy="270" rx="8" ry="4" transform="rotate(-15 185 270)"/>
+          <ellipse cx="220" cy="280" rx="8" ry="4" transform="rotate(10 220 280)"/>
+          <ellipse cx="160" cy="260" rx="8" ry="4" transform="rotate(5 160 260)"/>
+        </g>
+        <circle cx="190" cy="240" r="6" fill="#1a7d3c"/>
+        <circle cx="225" cy="260" r="6" fill="#1a7d3c"/>
+        <circle cx="205" cy="290" r="6" fill="#FFB300"/>
+        <path d="M120 130 Q130 100 118 78" stroke="#FFB300" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/>
+        <path d="M200 118 Q210 88 198 64" stroke="#FFB300" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/>
+        <path d="M280 130 Q290 100 278 78" stroke="#FFB300" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <div class="container">
+    <div class="menu-head reveal">
+      <span class="eyebrow" style="justify-content:center;">Our Special Menu</span>
+      <h2>Our Special Menu</h2>
+      <p>Five signature favourites, made fresh to order and on their way to you fast.</p>
+    </div>
+
+    <div class="login-box">
+      <input type="password" id="adminPassword" placeholder="Admin Password">
+      <button id="loginBtn">Admin Login</button>
+    </div>
+    <div class="login-msg" id="loginMsg"></div>
+
+    <div id="adminPanel">
+      <h3>Admin Control Panel</h3>
+      <p class="admin-sub">Toggle stock status &mdash; changes reflect instantly on the live menu.</p>
+      <div id="adminItemList"></div>
+      <button class="admin-logout" id="logoutBtn">Log Out</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Delicious <span>Bites</span></div>
+        <p>Delicious Bites, Main Bazar, Pakpattan, Punjab, Pakistan.</p>
+        <a href="#" class="footer-wa" id="footerWaBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.11-1.34A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.76 1.24-.45.06-.98.09-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.12-.16-1.02-1.36-1.02-2.6 0-1.23.65-1.84.88-2.09.22-.25.5-.31.66-.31.16 0 .33 0 .47.01.15.01.35-.06.55.42.22.53.74 1.83.8 1.96.06.14.1.3.02.47-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.49.14.24.62 1.02 1.33 1.65.91.82 1.68 1.07 1.92 1.19.24.12.38.1.52-.06.15-.16.62-.72.78-.97.16-.24.32-.2.54-.12.22.08 1.41.67 1.65.79.24.12.4.18.46.28.06.1.06.6-.16 1.22z"/></svg>
+          0310-6396034
+        </a>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#menu">Menu</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p>Stay updated with our latest offers and dishes.</p>
+        <div class="social-row">
+          <a href="#" id="fbIcon" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg>
+          </a>
+          <a href="#" id="igIcon" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.7 0 3.05.01 4.12.06 1.07.05 1.8.22 2.44.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.44.05 1.07.06 1.42.06 4.12s-.01 3.05-.06 4.12c-.05 1.07-.22 1.8-.47 2.44a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.44.47-1.07.05-1.42.06-4.12.06s-3.05-.01-4.12-.06c-1.07-.05-1.8-.22-2.44-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.44C2.01 15.05 2 14.7 2 12s.01-3.05.06-4.12c.05-1.07.22-1.8.47-2.44.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 015.45 2.53c.64-.25 1.37-.42 2.44-.47C8.95 2.01 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.17 1.17 0 11-2.34 0 1.17 1.17 0 012.34 0z"/></svg>
+          </a>
+          <a href="#" id="twIcon" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.33-1.5.55-2.3.65a4 4 0 001.76-2.22c-.78.46-1.63.8-2.55.98a4 4 0 00-6.9 3.66A11.4 11.4 0 013 4.9a4 4 0 001.24 5.37 4 4 0 01-1.82-.5v.05a4 4 0 003.2 3.93 4 4 0 01-1.8.07 4 4 0 003.74 2.8A8 8 0 012 18.4a11.3 11.3 0 006.1 1.8c7.3 0 11.3-6.1 11.3-11.3l-.01-.5c.78-.55 1.45-1.25 1.98-2.05z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="delivery-strip">30 Minute Delivery Available in Pakpattan</div>
+    <div class="copyright">&copy; <span id="year"></span> Delicious Bites, Pakpattan. All rights reserved.</div>
+  </div>
+</footer>
+
+<a href="#" class="float-wa" id="floatWaBtn" aria-label="Order on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.11-1.34A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.76 1.24-.45.06-.98.09-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.12-.16-1.02-1.36-1.02-2.6 0-1.23.65-1.84.88-2.09.22-.25.5-.31.66-.31.16 0 .33 0 .47.01.15.01.35-.06.55.42.22.53.74 1.83.8 1.96.06.14.1.3.02.47-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.49.14.24.62 1.02 1.33 1.65.91.82 1.68 1.07 1.92 1.19.24.12.38.1.52-.06.15-.16.62-.72.78-.97.16-.24.32-.2.54-.12.22.08 1.41.67 1.65.79.24.12.4.18.46.28.06.1.06.6-.16 1.22z"/></svg>
+</a>
+
+<script>
+(function(){
+  const WHATSAPP_NUMBER = '923106396034';
+  const ADMIN_PASSWORD = '12788312';
+
+  const MENU_ITEMS = [
+    { id:'falooda', name:'Falooda', price:150, bg:'#8E1616', img:'https://raw.githubusercontent.com/Faizanmirza-commits/Delicious-bite-restaurant-/d5fe4c235d28e064e03eb95f9db7266cb7d9be87/images/file_0000023bc81faa423b67f5c385adb.png', svg:`
+      <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+        <defs><linearGradient id="gFal" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFE082"/><stop offset="100%" stop-color="#FFB300"/>
+        </linearGradient></defs>
+        <path d="M70 60 L130 60 L120 165 Q100 178 80 165 Z" fill="#fff" opacity=".14"/>
+        <path d="M70 60 L130 60 L124 150 L76 150 Z" fill="#D32F2F"/>
+        <path d="M74 105 L126 105 L120 150 L80 150 Z" fill="#fff"/>
+        <path d="M76 118 L124 118 L120 150 L80 150 Z" fill="#FFF3E0"/>
+        <circle cx="88" cy="128" r="3.5" fill="#FFB300"/>
+        <circle cx="100" cy="135" r="3.5" fill="#D32F2F"/>
+        <circle cx="112" cy="126" r="3.5" fill="#FFB300"/>
+        <circle cx="95" cy="122" r="3.5" fill="#D32F2F"/>
+        <circle cx="108" cy="140" r="3.5" fill="#8E1616"/>
+        <path d="M100 60 Q100 40 90 32" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="88" cy="30" r="6" fill="url(#gFal)"/>
+        <path d="M64 58 L136 58 L133 66 L67 66 Z" fill="#FFB300"/>
+      </svg>` },
+    { id:'biryani', name:'Biryani', price:350, bg:'#B85C1B', svg:`
+      <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+        <ellipse cx="100" cy="140" rx="62" ry="22" fill="#8E1616"/>
+        <path d="M38 138 Q38 100 100 100 Q162 100 162 138 L156 142 Q100 118 44 142 Z" fill="#D32F2F"/>
+        <ellipse cx="100" cy="118" rx="60" ry="20" fill="#FFB300"/>
+        <g fill="#FFF3E0">
+          <ellipse cx="72" cy="112" rx="6" ry="3" transform="rotate(20 72 112)"/>
+          <ellipse cx="92" cy="106" rx="6" ry="3" transform="rotate(-10 92 106)"/>
+          <ellipse cx="112" cy="112" rx="6" ry="3" transform="rotate(15 112 112)"/>
+          <ellipse cx="130" cy="118" rx="6" ry="3" transform="rotate(-20 130 118)"/>
+          <ellipse cx="82" cy="122" rx="6" ry="3" transform="rotate(5 82 122)"/>
+          <ellipse cx="120" cy="124" rx="6" ry="3" transform="rotate(-5 120 124)"/>
+          <ellipse cx="100" cy="128" rx="6" ry="3" transform="rotate(10 100 128)"/>
+        </g>
+        <circle cx="80" cy="108" r="4" fill="#1a7d3c"/>
+        <circle cx="118" cy="110" r="4" fill="#1a7d3c"/>
+        <circle cx="100" cy="118" r="4.5" fill="#D32F2F"/>
+        <path d="M76 90 Q80 74 74 62" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+        <path d="M100 88 Q104 70 98 56" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+        <path d="M124 90 Q128 74 122 62" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+      </svg>` },
+    { id:'pizza',   name:'Pizza',   price:1400, bg:'#C1272D', svg:`
+      <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+        <path d="M100 40 L156 148 Q100 172 44 148 Z" fill="#FFB300"/>
+        <path d="M100 40 L156 148 Q100 172 44 148 Z" fill="#FFC933" opacity=".5"/>
+        <path d="M100 52 L146 142 Q100 160 54 142 Z" fill="#FFF3D0"/>
+        <circle cx="90" cy="90" r="8" fill="#D32F2F"/>
+        <circle cx="118" cy="108" r="8" fill="#D32F2F"/>
+        <circle cx="100" cy="130" r="8" fill="#D32F2F"/>
+        <circle cx="130" cy="130" r="7" fill="#8E1616"/>
+        <circle cx="78" cy="118" r="7" fill="#8E1616"/>
+        <path d="M100 40 L156 148 Q100 172 44 148 Z" fill="none" stroke="#D32F2F" stroke-width="4"/>
+        <path d="M60 46 Q100 30 140 46" stroke="#FFB300" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </svg>` },
+    { id:'burger',  name:'Burger',  price:170, bg:'#A8461B', svg:`
+      <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+        <path d="M50 92 Q50 62 100 62 Q150 62 150 92 Z" fill="#FFB300"/>
+        <g fill="#fff" opacity=".9">
+          <circle cx="76" cy="72" r="2.6"/><circle cx="96" cy="66" r="2.6"/>
+          <circle cx="116" cy="72" r="2.6"/><circle cx="86" cy="78" r="2.6"/><circle cx="108" cy="80" r="2.6"/>
+        </g>
+        <rect x="48" y="92" width="104" height="10" rx="4" fill="#4CAF50"/>
+        <rect x="46" y="102" width="108" height="16" rx="6" fill="#6B3A1F"/>
+        <rect x="50" y="118" width="100" height="9" rx="3" fill="#D32F2F"/>
+        <rect x="48" y="127" width="104" height="12" rx="4" fill="#FFE082"/>
+        <path d="M44 139 Q100 154 156 139 L152 156 Q100 168 48 156 Z" fill="#FFB300"/>
+      </svg>` },
+    { id:'rabri',   name:'Rabri',   price:200, bg:'#7A4A9C', svg:`
+      <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+        <path d="M56 96 Q56 148 100 152 Q144 148 144 96 Z" fill="#FFF3E0"/>
+        <ellipse cx="100" cy="96" rx="44" ry="14" fill="#FFFDF7"/>
+        <ellipse cx="100" cy="96" rx="44" ry="14" fill="none" stroke="#FFB300" stroke-width="2"/>
+        <g fill="#7CB342">
+          <path d="M84 90 l10 4 -10 4z"/><path d="M100 88 l10 4 -10 4z"/><path d="M116 92 l10 4 -10 4z"/>
+        </g>
+        <circle cx="92" cy="98" r="3" fill="#D32F2F"/>
+        <circle cx="108" cy="100" r="3" fill="#FFB300"/>
+        <circle cx="100" cy="92" r="3" fill="#D32F2F"/>
+        <path d="M56 96 Q100 108 144 96" stroke="#FFB300" stroke-width="2" fill="none" opacity=".6"/>
+      </svg>` }
+  ];
+
+  const STOCK_KEY = 'db_stock_status';
+  const LOGIN_KEY = 'db_admin_logged_in';
+
+  function getStock(){
+    try{
+      const saved = JSON.parse(localStorage.getItem(STOCK_KEY));
+      if(saved) return saved;
+    }catch(e){}
+    const fresh = {};
+    MENU_ITEMS.forEach(i => fresh[i.id] = 'in');
+    return fresh;
+  }
+  function saveStock(stock){
+    localStorage.setItem(STOCK_KEY, JSON.stringify(stock));
+  }
+
+  let stock = getStock();
+
+  function waLink(name, price){
+    const msg = `Hello I want to order ${name} for Rs. ${price} from Delicious Bites Pakpattan`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+
+  function renderMenu(){
+    const grid = document.getElementById('menuGrid');
+    grid.innerHTML = '';
+    MENU_ITEMS.forEach(item => {
+      const isOut = stock[item.id] === 'out';
+      const card = document.createElement('div');
+      card.className = 'card reveal' + (isOut ? ' out' : '');
+      const photoHtml = item.img
+        ? `<img src="${item.img}" alt="${item.name}" loading="lazy"
+             style="width:100%;height:100%;object-fit:cover;position:relative;z-index:1;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+           <div class="food-icon" style="display:none;position:absolute;">${item.svg}</div>`
+        : `<div class="food-icon">${item.svg}</div>`;
+
+      card.innerHTML = `
+        <div class="img-wrap" style="background:linear-gradient(160deg, ${item.bg} 0%, #221211 130%);">
+          ${photoHtml}
+          <span class="badge">OUT OF STOCK</span>
+        </div>
+        <div class="card-content">
+          <h3>${item.name}</h3>
+          <div class="price">Rs. ${item.price}</div>
+          <button class="order-btn" data-name="${item.name}" data-price="${item.price}" ${isOut ? 'disabled' : ''}>
+            Order Now
+          </button>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+    document.querySelectorAll('.order-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(btn.disabled) return;
+        const name = btn.getAttribute('data-name');
+        const price = btn.getAttribute('data-price');
+
+        if(typeof fbq === 'function'){
+          fbq('track', 'AddToCart', { content_name: name, value: parseFloat(price), currency: 'PKR' });
+          fbq('track', 'InitiateCheckout', { content_name: name, value: parseFloat(price), currency: 'PKR' });
+        }
+        window.open(waLink(name, price), '_blank');
+      });
+    });
+
+    revealObserve();
+  }
+
+  function renderAdminList(){
+    const list = document.getElementById('adminItemList');
+    list.innerHTML = '';
+    MENU_ITEMS.forEach(item => {
+      const isOut = stock[item.id] === 'out';
+      const row = document.createElement('div');
+      row.className = 'admin-item';
+      row.innerHTML = `
+        <div><span class="ai-name">${item.name}</span><span class="ai-price">Rs. ${item.price}</span></div>
+        <button class="${isOut ? 'out' : ''}" data-id="${item.id}">
+          ${isOut ? 'Mark In Stock' : 'Mark Out of Stock'}
+        </button>`;
+      list.appendChild(row);
+    });
+
+    list.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        stock[id] = stock[id] === 'out' ? 'in' : 'out';
+        saveStock(stock);
+        renderAdminList();
+        renderMenu();
+      });
+    });
+  }
+
+  /* ---------- admin login ---------- */
+  const loginBtn = document.getElementById('loginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const adminPanel = document.getElementById('adminPanel');
+  const loginMsg = document.getElementById('loginMsg');
+  const passwordInput = document.getElementById('adminPassword');
+  const loginBox = document.querySelector('.login-box');
+
+  function showAdmin(){
+    adminPanel.style.display = 'block';
+    loginBox.style.display = 'none';
+    loginMsg.textContent = '';
+    renderAdminList();
+  }
+  function hideAdmin(){
+    adminPanel.style.display = 'none';
+    loginBox.style.display = 'flex';
+  }
+
+  loginBtn.addEventListener('click', () => {
+    if(passwordInput.value === ADMIN_PASSWORD){
+      localStorage.setItem(LOGIN_KEY, 'true');
+      loginMsg.className = 'login-msg ok';
+      loginMsg.textContent = 'Login successful.';
+      passwordInput.value = '';
+      showAdmin();
+    } else {
+      loginMsg.className = 'login-msg err';
+      loginMsg.textContent = 'Incorrect password. Please try again.';
+    }
+  });
+  passwordInput.addEventListener('keydown', e => { if(e.key === 'Enter') loginBtn.click(); });
+
+  logoutBtn.addEventListener('click', () => {
+    localStorage.setItem(LOGIN_KEY, 'false');
+    hideAdmin();
+  });
+
+  if(localStorage.getItem(LOGIN_KEY) === 'true'){
+    showAdmin();
+  }
+
+  /* ---------- mobile nav ---------- */
+  document.getElementById('burgerBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  /* ---------- whatsapp links (footer + floating) ---------- */
+  const genericWaLink = () => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello, I want to order from Delicious Bites Pakpattan')}`;
+
+  document.getElementById('footerWaBtn').href = genericWaLink();
+  document.getElementById('floatWaBtn').href = genericWaLink();
+
+  document.getElementById('footerWaBtn').addEventListener('click', () => {
+    if(typeof fbq === 'function') fbq('track', 'Contact');
+  });
+  document.getElementById('floatWaBtn').addEventListener('click', () => {
+    if(typeof fbq === 'function') fbq('track', 'Contact');
+  });
+
+  /* ---------- hero order now = Lead ---------- */
+  document.getElementById('heroOrderBtn').addEventListener('click', () => {
+    if(typeof fbq === 'function') fbq('track', 'Lead');
+  });
+
+  /* ---------- social icons = CompleteRegistration ---------- */
+  ['fbIcon','igIcon','twIcon'].forEach(id => {
+    document.getElementById(id).addEventListener('click', (e) => {
+      if(typeof fbq === 'function') fbq('track', 'CompleteRegistration');
+    });
+  });
+
+  /* ---------- ViewContent when menu section is scrolled into view ---------- */
+  let viewContentFired = false;
+  const menuSection = document.getElementById('menu');
+  const vcObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && !viewContentFired){
+        viewContentFired = true;
+        if(typeof fbq === 'function') fbq('track', 'ViewContent');
+        vcObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  vcObserver.observe(menuSection);
+
+  /* ---------- scroll reveal ---------- */
+  function revealObserve(){
+    const els = document.querySelectorAll('.reveal:not(.show)');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => obs.observe(el));
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  renderMenu();
+  revealObserve();
+})();
+</script>
+
+</body>
+</html>
