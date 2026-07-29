@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Delicious Bites | Pakpattan</title>
+
+<meta name="description" content="Serving the best taste in Pakpattan.">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- ================= META PIXEL ================= -->
+
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;
+n.push=n;
+n.loaded=!0;
+n.version='2.0';
+n.queue=[];
+t=b.createElement(e);
+t.async=!0;
+t.src=v;
+s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}
+(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init','YOUR_PIXEL_ID');
+
+fbq('track','PageView');
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+</noscript>
+
+<!-- Later use on Thank You Page -->
+<!--
+fbq('track','Purchase',{
+value:0.00,
+currency:'PKR'
+});
+-->
+
+</head>
+
+<body>
+
+<header class="hero">
+
+<div class="overlay">
+
+<h1>Delicious Bites</h1>
+
+<h2>Taste That You Will Remember</h2>
+
+<p>Now Serving in Pakpattan</p>
+
+<button id="heroBtn">Order Now</button>
+
+</div>
+
+</header>
+
+<section class="about">
+
+<h2>About Us</h2>
+
+<p>
+
+Serving the best taste in Pakpattan since 2020.
+We bring you authentic flavors with a modern touch and
+30 Minute Delivery in Pakpattan City.
+
+</p>
+
+</section>
+
+<section class="menu" id="menu">
+
+<h2>Our Special Menu</h2>
+
+<div class="loginBox">
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Admin Password">
+
+<button id="loginBtn">Admin Login</button>
+
+</div>
+
+<div id="adminPanel"></div>
+
+<div class="cards" id="cards"></div>
+
+</section>
+
+<footer>
+
+<h2>Contact Us</h2>
+
+<p>
+
+Delicious Bites,
+Main Bazar,
+Pakpattan,
+Punjab,
+Pakistan
+
+</p>
+
+<a
+id="footerWhatsapp"
+href="https://wa.me/923106396034"
+target="_blank">
+
+0310-6396034
+
+</a>
+
+<div class="social">
+
+<a href="#"><i class="fab fa-facebook"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-twitter"></i></a>
+
+</div>
+
+<p>
+
+30 Minute Delivery Available in Pakpattan
+
+</p>
+
+<p>
+
+© 2026 Delicious Bites
+
+</p>
+
+</footer>
+
+<a
+class="floating"
+id="floatingWA"
+href="https://wa.me/923106396034"
+target="_blank">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#fff;
+color:#333;
+}
+
+.hero{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.overlay{
+background:rgba(0,0,0,.55);
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:#fff;
+text-align:center;
+padding:20px;
+}
+
+.overlay h1{
+font-size:60px;
+}
+
+.overlay h2{
+margin:10px 0;
+}
+
+button{
+background:#D32F2F;
+color:#fff;
+border:none;
+padding:12px 24px;
+cursor:pointer;
+border-radius:8px;
+}
+
+button:hover{
+background:#FFB300;
+color:#000;
+}
+
+.about,
+.menu,
+footer{
+padding:70px 10%;
+text-align:center;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.card{
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+border-radius:12px;
+overflow:hidden;
+position:relative;
+background:#fff;
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+transition:.3s;
+}
+
+.card-content{
+padding:20px;
+}
+
+.badge{
+position:absolute;
+top:10px;
+right:10px;
+background:red;
+color:white;
+padding:6px 10px;
+border-radius:6px;
+font-size:12px;
+}
+
+.fade img{
+opacity:.3;
+}
+
+.loginBox{
+margin:25px 0;
+}
+
+.loginBox input{
+padding:12px;
+width:220px;
+}
+
+#adminPanel{
+display:none;
+margin:20px auto;
+padding:20px;
+background:#f7f7f7;
+border-radius:10px;
+max-width:700px;
+}
+
+.adminRow{
+display:flex;
+justify-content:space-between;
+padding:10px;
+}
+
+footer{
+background:#222;
+color:white;
+}
+
+footer a{
+color:#FFB300;
+display:inline-block;
+margin:10px;
+}
+
+.social a{
+font-size:28px;
+}
+
+.floating{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25D366;
+width:60px;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:30px;
+color:white;
+text-decoration:none;
+}
+
+@media(max-width:768px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.overlay h1{
+font-size:38px;
+}
+
+const password = "12788312";
+
+const menu = [
+
+{
+name:"Falooda",
+price:150,
+image:"https://images.unsplash.com/photo-1551024601-bec78aea5593"
+},
+
+{
+name:"Biryani",
+price:350,
+image:"https://images.unsplash.com/photo-1631515242808-497c3fbd3972"
+},
+
+{
+name:"Pizza",
+price:1400,
+image:"https://images.unsplash.com/photo-1513104890138-7c749659a591"
+},
+
+{
+name:"Burger",
+price:170,
+image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd"
+},
+
+{
+name:"Rabri",
+price:200,
+image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c"
+}
+
+];
+
+let stock=JSON.parse(localStorage.getItem("stock"))||{};
+let logged=localStorage.getItem("admin")=="true";
+
+const cards=document.getElementById("cards");
+
+function render(){
+
+cards.innerHTML="";
+
+menu.forEach(item=>{
+
+let out=stock[item.name];
+
+cards.innerHTML+=`
+
+<div class="card ${out?'fade':''}">
+
+${out?'<div class="badge">OUT OF STOCK</div>':''}
+
+<img src="${item.image}">
+
+<div class="card-content">
+
+<h3>${item.name}</h3>
+
+<p>Rs. ${item.price}</p>
+
+<button
+
+${out?'disabled':''}
+
+onclick="order('${item.name}',${item.price})">
+
+Order Now
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+renderAdmin();
+
+}
+
+function order(name,price){
+
+fbq('track','AddToCart',{
+content_name:name,
+value:price,
+currency:'PKR'
+});
+
+fbq('track','InitiateCheckout');
+
+location.href=`https://wa.me/923106396034?text=Hello I want to order ${name} for Rs. ${price} from Delicious Bites Pakpattan`;
+
+}
+
+heroBtn.onclick=()=>{
+
+document.getElementById("menu").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+fbq('track','Lead');
+
+}
+
+let viewed=false;
+
+window.addEventListener("scroll",()=>{
+
+if(viewed)return;
+
+if(window.scrollY>500){
+
+viewed=true;
+
+fbq('track','ViewContent');
+
+}
+
+});
+
+loginBtn.onclick=()=>{
+
+if(adminPassword.value===password){
+
+logged=true;
+
+localStorage.setItem("admin","true");
+
+renderAdmin();
+
+}
+
+else{
+
+alert("Wrong Password");
+
+}
+
+}
+
+function renderAdmin(){
+
+let panel=document.getElementById("adminPanel");
+
+if(!logged){
+
+panel.style.display="none";
+
+return;
+
+}
+
+panel.style.display="block";
+
+panel.innerHTML="<h3>Admin Control Panel</h3>";
+
+menu.forEach(item=>{
+
+let out=stock[item.name];
+
+panel.innerHTML+=`
+
+<div class="adminRow">
+
+<span>${item.name}</span>
+
+<button onclick="toggle('${item.name}')">
+
+${out?'Mark In Stock':'Mark Out of Stock'}
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function toggle(name){
+
+stock[name]=!stock[name];
+
+localStorage.setItem("stock",JSON.stringify(stock));
+
+render();
+
+}
+
+footerWhatsapp.onclick=()=>{
+
+fbq('track','Contact');
+
+}
+
+floatingWA.onclick=()=>{
+
+fbq('track','Contact');
+
+}
+
+document.querySelectorAll(".social a").forEach(a=>{
+
+a.onclick=()=>{
+
+fbq('track','CompleteRegistration');
+
+};
+
+});
+
+render();
