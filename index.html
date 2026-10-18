@@ -464,4 +464,316 @@ function initFirebaseIfConfigured(onReady){
 
 /* ---------------- PHOTOS (built into this file, no images/ folder needed) ---------------- */
 const foodPhotos = {
-  shawarma: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAHVAyADASIAAhEBAxEB/8QAHAAAAgMAAwEAAAAAAAAAAAAABQYDBAcAAQII/8QARhAAAgEDAgQEBAMHAwMDAwIHAQIDAAQRBSEGEjFBEyJRYQcUcYEykaEVI0JSscHRM+HwJGLxFkNyCIKSJTRTomPSc7LC/8QAGwEAAgMBAQEAAAAAAAAAAAAAAgMBBAUABgf/xAA2EQACAgEEAAQDBwUAAwADAQABAgADEQQSITETIkFRBTJhFHGBkaGx8CNCwdHhFVLxBjNicv/aAAwDAQACEQMRAD8AXOIpVhY+GenpSpNctI2Mmrl3f/OW/Nneh9jFzzb9K8hRRsGD3Gm0sBmW7aJipLGqd1Aockk0TuJFjXA2pe1S4fBKmrVVJL4zNn4d8VfTeUSx4cfr+tc+WjJ60tCe7eUKgY5O1OGiaZM8PiT56d6s21JUMs03Kfimp1TbVE8DSOePn5dq7i0aOUYA3q5qWpxQQiNWGQMYqvw7NLd3gVTsTSkIK7icQ777FYKDmTDhJni8TlPLVX/0wr5AzmtC1OY2emKQCQox0pW0vUpJLrLKcE967T2C
+  shawarma:'images/shawarma.jpg',
+  samosa:'images/samosa.jpg',
+  roll:'images/roll.jpg',
+};
+
+/* ---------------- MENU DATA ---------------- */
+const menuItems = [
+  { id:'falooda', name:'Falooda', price:150, img:'images/falooda.jpg' },
+  { id:'biryani', name:'Biryani', price:350, img:'images/biryani.jpg' },
+  { id:'pizza',   name:'Pizza',   price:1400, img:'images/pizza.jpg' },
+  { id:'burger',  name:'Burger',  price:170, img:'images/burger.jpg' },
+  { id:'rabri',   name:'Rabri',   price:200, img:'images/rabri.jpg' },
+  { id:'shawarma', name:'Shawarma', price:150, img:'images/shawarma.jpg' },
+  { id:'samosa',   name:'Samosa',   price:10, img:foodPhotos.samosa },
+  { id:'roll',     name:'Roll',     price:15, img:foodPhotos.roll },
+];
+
+/* Built-in pictures (SVG) for every item. They always show; if a real photo exists in the images/ folder it fades in on top of them. */
+const foodArt = {
+  shawarma: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient><linearGradient id="wrap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D9A94F"/><stop offset="0.5" stop-color="#F0CC83"/><stop offset="1" stop-color="#D9A94F"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><ellipse cx="200" cy="214" rx="130" ry="16" fill="#8a5a1a" opacity="0.25"/><ellipse cx="200" cy="206" rx="125" ry="18" fill="#ffffff"/><ellipse cx="200" cy="204" rx="105" ry="13" fill="#f3f3f3"/><!-- wrap body --><path d="M162 196 L238 196 L262 82 L138 82 Z" fill="url(#wrap)" stroke="#B88434" stroke-width="3" stroke-linejoin="round"/><path d="M176 190 L200 90" stroke="#C8963F" stroke-width="2" fill="none" opacity="0.7"/><path d="M224 190 L200 90" stroke="#C8963F" stroke-width="2" fill="none" opacity="0.7"/><!-- grill marks --><path d="M158 120 L242 130" stroke="#9A6A22" stroke-width="3" stroke-linecap="round" opacity="0.45"/><path d="M154 140 L246 150" stroke="#9A6A22" stroke-width="3" stroke-linecap="round" opacity="0.45"/><!-- foil --><path d="M164 186 L236 186 L231 214 L169 214 Z" fill="#CFD8DC" stroke="#90A4AE" stroke-width="2" stroke-linejoin="round"/><path d="M180 188 L176 212 M196 188 L194 212 M212 188 L214 212 M228 188 L224 212" stroke="#B0BEC5" stroke-width="2"/><!-- filling on top --><ellipse cx="200" cy="82" rx="62" ry="15" fill="#5D3A1A"/><path d="M146 80 Q156 52 172 74 Q180 48 198 72 Q212 44 226 72 Q240 54 254 80 Q200 96 146 80 Z" fill="#7CB342"/><path d="M158 78 Q170 62 182 76 Q196 58 208 76 Q222 60 240 78 Q200 90 158 78 Z" fill="#9CCC65"/><!-- meat strips --><path d="M164 74 Q176 56 190 72" stroke="#8D5524" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M206 70 Q220 52 236 72" stroke="#6D4020" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M184 66 Q200 48 214 66" stroke="#A0652D" stroke-width="8" stroke-linecap="round" fill="none"/><!-- tomato --><circle cx="178" cy="62" r="8" fill="#E53935"/><circle cx="226" cy="60" r="8" fill="#D32F2F"/><circle cx="202" cy="52" r="7" fill="#EF5350"/><!-- sauce --><path d="M158 66 Q180 50 200 66 Q222 48 244 66" stroke="#FFFDF5" stroke-width="6" stroke-linecap="round" fill="none"/><!-- steam --><path d="M176 38 Q168 28 178 20 Q186 12 178 4" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/><path d="M206 34 Q198 24 208 16 Q216 8 208 2" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/><path d="M234 38 Q226 28 236 20 Q244 12 236 4" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/></svg>`,
+  samosa: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient><linearGradient id="sam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2B44A"/><stop offset="1" stop-color="#C9812A"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><ellipse cx="190" cy="218" rx="150" ry="14" fill="#8a5a1a" opacity="0.25"/><ellipse cx="190" cy="208" rx="148" ry="20" fill="#ffffff"/><ellipse cx="190" cy="206" rx="126" ry="14" fill="#f3f3f3"/><!-- back samosa --><path d="M168 190 L228 78 L288 190 Z" fill="url(#sam)" stroke="#9A5F18" stroke-width="4" stroke-linejoin="round"/><path d="M228 90 L228 182" stroke="#B87420" stroke-width="2" opacity="0.7"/><path d="M190 184 L228 112 L266 184" stroke="#E7A840" stroke-width="3" fill="none" opacity="0.8" stroke-linejoin="round"/><circle cx="214" cy="150" r="3" fill="#F7D07A"/><circle cx="244" cy="160" r="3" fill="#F7D07A"/><circle cx="230" cy="132" r="2.5" fill="#F7D07A"/><!-- front samosa --><path d="M82 196 L152 70 L222 196 Z" fill="url(#sam)" stroke="#9A5F18" stroke-width="4" stroke-linejoin="round"/><path d="M152 84 L152 188" stroke="#B87420" stroke-width="2" opacity="0.7"/><path d="M108 190 L152 108 L196 190" stroke="#E7A840" stroke-width="3" fill="none" opacity="0.8" stroke-linejoin="round"/><path d="M96 196 L120 196 M184 196 L208 196" stroke="#9A5F18" stroke-width="3" stroke-linecap="round"/><circle cx="132" cy="158" r="3.5" fill="#F7D07A"/><circle cx="170" cy="168" r="3.5" fill="#F7D07A"/><circle cx="150" cy="134" r="3" fill="#F7D07A"/><circle cx="120" cy="180" r="2.5" fill="#F7D07A"/><circle cx="186" cy="146" r="2.5" fill="#F7D07A"/><!-- chutney bowl --><path d="M300 176 Q300 212 334 212 Q368 212 368 176 Z" fill="#ffffff" stroke="#D32F2F" stroke-width="3"/><ellipse cx="334" cy="176" rx="34" ry="9" fill="#7CB342"/><ellipse cx="334" cy="175" rx="26" ry="6" fill="#9CCC65"/><!-- steam --><path d="M128 52 Q120 42 130 34 Q138 26 130 18" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/><path d="M236 44 Q228 34 238 26 Q246 18 238 10" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/></svg>`,
+  roll: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient><linearGradient id="par" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D58F"/><stop offset="0.5" stop-color="#E5B35E"/><stop offset="1" stop-color="#C98F3A"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><ellipse cx="200" cy="216" rx="140" ry="14" fill="#8a5a1a" opacity="0.25"/><ellipse cx="200" cy="208" rx="138" ry="18" fill="#ffffff"/><ellipse cx="200" cy="206" rx="118" ry="12" fill="#f3f3f3"/><g transform="translate(0 24) rotate(-14 200 130)"><!-- roll body --><rect x="95" y="92" width="210" height="76" rx="38" fill="url(#par)" stroke="#A56E22" stroke-width="3"/><!-- toasted spots --><path d="M150 104 Q162 98 174 106" stroke="#A56E22" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/><path d="M200 150 Q214 144 228 152" stroke="#A56E22" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/><path d="M240 108 Q250 102 262 108" stroke="#A56E22" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/><!-- paper wrap on the left --><path d="M95 106 Q95 92 133 92 L196 92 L186 168 L133 168 Q95 168 95 154 Z" fill="#D32F2F"/><path d="M196 92 L186 168" stroke="#B71C1C" stroke-width="3"/><path d="M118 108 L176 108 M118 130 L180 130 M118 152 L184 152" stroke="#FFB300" stroke-width="4" stroke-linecap="round" opacity="0.9"/><!-- open end with filling --><ellipse cx="302" cy="130" rx="22" ry="38" fill="#F3D58F" stroke="#A56E22" stroke-width="3"/><ellipse cx="302" cy="130" rx="15" ry="29" fill="#8D5524"/><circle cx="298" cy="112" r="8" fill="#7CB342"/><circle cx="306" cy="130" r="8" fill="#B57EDC"/><circle cx="298" cy="148" r="7" fill="#E53935"/><path d="M292 122 Q304 118 312 126" stroke="#FFFDF5" stroke-width="5" stroke-linecap="round" fill="none"/><!-- filling peeking out --><path d="M318 112 Q338 100 346 118" stroke="#7CB342" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M320 136 Q340 146 344 130" stroke="#8D5524" stroke-width="8" stroke-linecap="round" fill="none"/></g><!-- steam --><path d="M160 52 Q152 42 162 34 Q170 26 162 18" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/><path d="M214 44 Q206 34 216 26 Q224 18 216 10" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/></svg>`,
+  falooda: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0.35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><ellipse cx="200" cy="220" rx="90" ry="9" fill="#8a5a1a" opacity="0.25"/><!-- glass base --><ellipse cx="200" cy="214" rx="48" ry="8" fill="#ffffff" stroke="#E0E0E0" stroke-width="2"/><path d="M192 196 L208 196 L212 212 L188 212 Z" fill="#ffffff" stroke="#E0E0E0" stroke-width="2"/><!-- layers --><path d="M148 80 L252 80 L240 196 L160 196 Z" fill="#FFF3E0"/><path d="M164 162 L236 162 L240 196 L160 196 Z" fill="#EC407A"/><path d="M155 122 L245 122 L238 162 L162 162 Z" fill="#FFF8E1"/><path d="M158 132 Q172 124 186 132 T214 132 T242 132 M160 144 Q174 136 188 144 T216 144 T240 144 M162 154 Q176 146 190 154 T218 154 T238 154" stroke="#F3D9A0" stroke-width="3" fill="none"/><path d="M150 90 L250 90 L245 122 L155 122 Z" fill="#F8BBD0"/><circle cx="176" cy="150" r="3" fill="#8D6E63"/><circle cx="220" cy="140" r="3" fill="#8D6E63"/><circle cx="200" cy="174" r="3" fill="#FFB300"/><circle cx="180" cy="104" r="3" fill="#F48FB1"/><circle cx="224" cy="108" r="3" fill="#F48FB1"/><!-- glass shine --><path d="M148 80 L252 80 L240 196 L160 196 Z" fill="url(#glass)" stroke="#BDBDBD" stroke-width="3" stroke-linejoin="round"/><path d="M160 92 L168 184" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.7"/><!-- ice cream scoop --><circle cx="200" cy="66" r="36" fill="#FFF3C4"/><path d="M168 62 Q176 82 188 70 Q196 92 208 72 Q222 90 230 68 Q236 74 236 66 Q232 40 200 32 Q168 40 168 62 Z" fill="#FFE9A0"/><path d="M174 58 Q200 74 228 56" stroke="#EC407A" stroke-width="5" stroke-linecap="round" fill="none"/><!-- nuts --><rect x="182" y="44" width="10" height="4" rx="2" fill="#7CB342" transform="rotate(25 187 46)"/><rect x="206" y="40" width="10" height="4" rx="2" fill="#7CB342" transform="rotate(-20 211 42)"/><rect x="194" y="52" width="10" height="4" rx="2" fill="#C8A165" transform="rotate(10 199 54)"/><rect x="214" y="52" width="10" height="4" rx="2" fill="#C8A165" transform="rotate(-30 219 54)"/><!-- cherry --><circle cx="200" cy="30" r="8" fill="#D32F2F"/><path d="M200 23 Q204 12 212 10" stroke="#5D4037" stroke-width="2" fill="none"/><!-- straw --><path d="M226 78 L264 22" stroke="#D32F2F" stroke-width="7" stroke-linecap="round"/><path d="M234 66 L238 60 M244 52 L248 46 M254 38 L258 32" stroke="#ffffff" stroke-width="7" stroke-linecap="butt"/></svg>`,
+  biryani: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient><linearGradient id="rice" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FAD068"/><stop offset="1" stop-color="#E6962E"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><ellipse cx="200" cy="214" rx="160" ry="16" fill="#8a5a1a" opacity="0.25"/><!-- plate --><ellipse cx="200" cy="170" rx="158" ry="52" fill="#ffffff"/><ellipse cx="200" cy="168" rx="134" ry="40" fill="#F3F3F3" stroke="#E0E0E0" stroke-width="2"/><!-- rice mound --><path d="M82 168 Q96 84 200 70 Q304 84 318 168 Q200 200 82 168 Z" fill="url(#rice)" stroke="#C9822A" stroke-width="3" stroke-linejoin="round"/><!-- orange / white rice streaks --><path d="M120 150 Q150 110 190 100" stroke="#E65100" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.55"/><path d="M250 112 Q276 130 290 156" stroke="#E65100" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.55"/><g fill="#FFF8E1"><ellipse cx="130" cy="158" rx="9" ry="3" transform="rotate(-20 130 158)"/><ellipse cx="160" cy="128" rx="9" ry="3" transform="rotate(25 160 128)"/><ellipse cx="190" cy="108" rx="9" ry="3" transform="rotate(-10 190 108)"/><ellipse cx="225" cy="104" rx="9" ry="3" transform="rotate(30 225 104)"/><ellipse cx="262" cy="130" rx="9" ry="3" transform="rotate(-25 262 130)"/><ellipse cx="286" cy="158" rx="9" ry="3" transform="rotate(15 286 158)"/><ellipse cx="210" cy="176" rx="9" ry="3" transform="rotate(-5 210 176)"/><ellipse cx="170" cy="172" rx="9" ry="3" transform="rotate(20 170 172)"/><ellipse cx="248" cy="166" rx="9" ry="3" transform="rotate(-15 248 166)"/></g><!-- chicken pieces --><ellipse cx="170" cy="112" rx="34" ry="20" fill="#9A5A22" stroke="#6D3E12" stroke-width="3" transform="rotate(-18 170 112)"/><ellipse cx="164" cy="107" rx="20" ry="9" fill="#B97A36" transform="rotate(-18 164 107)"/><rect x="124" y="118" width="18" height="8" rx="4" fill="#FFF3E0" stroke="#D7C7A5" stroke-width="2" transform="rotate(-20 133 122)"/><ellipse cx="248" cy="104" rx="30" ry="18" fill="#8D4F1C" stroke="#6D3E12" stroke-width="3" transform="rotate(16 248 104)"/><ellipse cx="252" cy="99" rx="17" ry="8" fill="#B97A36" transform="rotate(16 252 99)"/><!-- herbs --><circle cx="206" cy="88" r="6" fill="#43A047"/><circle cx="216" cy="94" r="5" fill="#66BB6A"/><circle cx="198" cy="94" r="5" fill="#2E7D32"/><circle cx="140" cy="140" r="5" fill="#43A047"/><circle cx="276" cy="140" r="5" fill="#66BB6A"/><!-- tomato + onion --><circle cx="108" cy="170" r="14" fill="#E53935" stroke="#B71C1C" stroke-width="2"/><path d="M100 166 Q108 160 116 166" stroke="#FFCDD2" stroke-width="2" fill="none"/><path d="M286 176 Q300 168 312 176" stroke="#B57EDC" stroke-width="5" stroke-linecap="round" fill="none"/><!-- lemon wedge --><path d="M318 184 Q336 168 354 184 Z" fill="#FFEB3B" stroke="#F9A825" stroke-width="3" stroke-linejoin="round"/><!-- steam --><path d="M170 56 Q162 46 172 38 Q180 30 172 22" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.85"/><path d="M206 50 Q198 40 208 32 Q216 24 208 16" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.85"/><path d="M242 56 Q234 46 244 38 Q252 30 244 22" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.85"/></svg>`,
+  pizza: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><!-- wooden board --><ellipse cx="200" cy="130" rx="150" ry="108" fill="#8a5a1a" opacity="0.25" transform="translate(0 8)"/><ellipse cx="200" cy="124" rx="150" ry="108" fill="#B07A3A" stroke="#8D5F26" stroke-width="3"/><!-- pizza --><ellipse cx="200" cy="122" rx="122" ry="92" fill="#D9963A" stroke="#B87420" stroke-width="3"/><ellipse cx="200" cy="122" rx="108" ry="80" fill="#F6C545"/><ellipse cx="200" cy="122" rx="108" ry="80" fill="#E53935" opacity="0.12"/><path d="M110 100 Q150 118 200 112 Q250 118 292 96" stroke="#FFE082" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/><path d="M120 150 Q160 140 200 152 Q246 142 284 150" stroke="#FFE082" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8"/><!-- slice cuts --><path d="M200 42 L200 202 M110 82 L290 162 M290 82 L110 162" stroke="#B87420" stroke-width="2" opacity="0.5"/><!-- pepperoni --><g fill="#C62828" stroke="#8E1B1B" stroke-width="2"><ellipse cx="160" cy="86" rx="15" ry="11"/><ellipse cx="236" cy="82" rx="15" ry="11"/><ellipse cx="200" cy="122" rx="15" ry="11"/><ellipse cx="132" cy="128" rx="15" ry="11"/><ellipse cx="268" cy="126" rx="15" ry="11"/><ellipse cx="164" cy="164" rx="15" ry="11"/><ellipse cx="238" cy="166" rx="15" ry="11"/></g><g fill="#E57373"><ellipse cx="156" cy="83" rx="5" ry="3"/><ellipse cx="232" cy="79" rx="5" ry="3"/><ellipse cx="196" cy="119" rx="5" ry="3"/><ellipse cx="128" cy="125" rx="5" ry="3"/><ellipse cx="264" cy="123" rx="5" ry="3"/></g><!-- green pepper rings --><g fill="none" stroke="#43A047" stroke-width="4"><ellipse cx="200" cy="72" rx="10" ry="7"/><ellipse cx="170" cy="130" rx="9" ry="6"/><ellipse cx="226" cy="140" rx="9" ry="6"/><ellipse cx="206" cy="174" rx="10" ry="7"/></g><!-- olives --><g fill="#37474F"><circle cx="140" cy="106" r="5"/><circle cx="260" cy="104" r="5"/><circle cx="190" cy="146" r="5"/><circle cx="150" cy="150" r="4"/><circle cx="258" cy="150" r="4"/></g><g fill="#ffffff"><circle cx="140" cy="106" r="1.5"/><circle cx="260" cy="104" r="1.5"/><circle cx="190" cy="146" r="1.5"/></g><!-- basil --><g fill="#2E7D32"><ellipse cx="214" cy="100" rx="7" ry="4" transform="rotate(30 214 100)"/><ellipse cx="178" cy="108" rx="7" ry="4" transform="rotate(-30 178 108)"/><ellipse cx="244" cy="124" rx="7" ry="4" transform="rotate(10 244 124)"/></g></svg>`,
+  burger: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient><linearGradient id="bun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3B84F"/><stop offset="1" stop-color="#D9892B"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><ellipse cx="200" cy="222" rx="140" ry="10" fill="#8a5a1a" opacity="0.25"/><!-- bottom bun --><path d="M96 186 L304 186 Q304 214 270 214 L130 214 Q96 214 96 186 Z" fill="url(#bun)" stroke="#B87420" stroke-width="3" stroke-linejoin="round"/><!-- tomato --><rect x="92" y="168" width="216" height="20" rx="10" fill="#E53935" stroke="#B71C1C" stroke-width="2"/><path d="M110 176 L290 176" stroke="#EF9A9A" stroke-width="3" stroke-linecap="round" opacity="0.8"/><!-- patty --><rect x="88" y="142" width="224" height="32" rx="16" fill="#6D3E1A" stroke="#4A2810" stroke-width="3"/><path d="M110 154 L130 154 M150 162 L172 162 M200 154 L222 154 M246 162 L268 162" stroke="#8D5A2B" stroke-width="4" stroke-linecap="round"/><!-- cheese --><path d="M92 138 L308 138 L286 166 L262 142 L226 170 L196 142 L162 168 L136 142 L112 164 Z" fill="#FFC107" stroke="#E0A100" stroke-width="2" stroke-linejoin="round"/><!-- lettuce --><path d="M86 130 Q100 112 116 128 Q130 110 148 128 Q164 110 182 128 Q198 110 216 128 Q232 110 250 128 Q266 110 284 128 Q298 112 314 130 L314 140 L86 140 Z" fill="#7CB342" stroke="#558B2F" stroke-width="2" stroke-linejoin="round"/><!-- onion --><path d="M108 118 Q150 128 196 118 Q250 128 292 116" stroke="#E1BEE7" stroke-width="5" stroke-linecap="round" fill="none"/><!-- top bun --><path d="M90 118 Q90 40 200 38 Q310 40 310 118 Q200 126 90 118 Z" fill="url(#bun)" stroke="#B87420" stroke-width="3" stroke-linejoin="round"/><path d="M112 66 Q140 46 180 44" stroke="#FFE0A0" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.6"/><!-- sesame --><g fill="#FFF8E1"><ellipse cx="150" cy="70" rx="6" ry="3" transform="rotate(-25 150 70)"/><ellipse cx="190" cy="58" rx="6" ry="3" transform="rotate(10 190 58)"/><ellipse cx="232" cy="68" rx="6" ry="3" transform="rotate(30 232 68)"/><ellipse cx="268" cy="86" rx="6" ry="3" transform="rotate(-10 268 86)"/><ellipse cx="124" cy="92" rx="6" ry="3" transform="rotate(20 124 92)"/><ellipse cx="172" cy="94" rx="6" ry="3" transform="rotate(-15 172 94)"/><ellipse cx="220" cy="96" rx="6" ry="3" transform="rotate(15 220 96)"/><ellipse cx="200" cy="76" rx="6" ry="3" transform="rotate(-5 200 76)"/></g></svg>`,
+  rabri: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9C7"/><stop offset="1" stop-color="#FFC970"/></linearGradient><linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E24A4A"/><stop offset="1" stop-color="#A62020"/></linearGradient></defs><rect width="400" height="240" fill="url(#bg)"/><ellipse cx="200" cy="220" rx="130" ry="12" fill="#8a5a1a" opacity="0.25"/><!-- bowl --><path d="M92 112 Q92 206 200 206 Q308 206 308 112 Z" fill="url(#bowl)" stroke="#8E1B1B" stroke-width="3" stroke-linejoin="round"/><path d="M104 150 Q200 170 296 150" stroke="#FFB300" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M120 176 Q200 192 280 176" stroke="#FFB300" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/><circle cx="150" cy="164" r="3" fill="#FFB300"/><circle cx="200" cy="172" r="3" fill="#FFB300"/><circle cx="250" cy="164" r="3" fill="#FFB300"/><!-- rim --><ellipse cx="200" cy="112" rx="110" ry="26" fill="#FFB300" stroke="#C98600" stroke-width="3"/><!-- rabri surface --><ellipse cx="200" cy="112" rx="98" ry="20" fill="#FFF1CC"/><path d="M120 112 Q150 98 180 108 Q210 98 242 108 Q266 100 282 110" stroke="#F3DDA0" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M130 120 Q170 128 210 120 Q250 128 274 118" stroke="#F3DDA0" stroke-width="3" fill="none" stroke-linecap="round"/><!-- pistachio --><g fill="#7CB342"><rect x="150" y="100" width="14" height="5" rx="2.5" transform="rotate(-25 157 102)"/><rect x="192" y="96" width="14" height="5" rx="2.5" transform="rotate(15 199 98)"/><rect x="232" y="102" width="14" height="5" rx="2.5" transform="rotate(-10 239 104)"/><rect x="172" y="116" width="14" height="5" rx="2.5" transform="rotate(30 179 118)"/><rect x="216" y="116" width="14" height="5" rx="2.5" transform="rotate(-30 223 118)"/><rect x="256" y="112" width="14" height="5" rx="2.5" transform="rotate(20 263 114)"/></g><!-- almond slivers --><g fill="#D7B07A" stroke="#B88A4E" stroke-width="1.5"><rect x="166" y="104" width="16" height="6" rx="3" transform="rotate(20 174 107)"/><rect x="208" y="106" width="16" height="6" rx="3" transform="rotate(-20 216 109)"/><rect x="140" y="114" width="16" height="6" rx="3" transform="rotate(-10 148 117)"/><rect x="244" y="116" width="16" height="6" rx="3" transform="rotate(25 252 119)"/></g><!-- saffron strands --><g stroke="#E65100" stroke-width="2" stroke-linecap="round"><path d="M186 108 L194 112"/><path d="M226 102 L234 106"/><path d="M160 112 L168 116"/><path d="M270 106 L276 110"/><path d="M204 118 L212 121"/></g><!-- steam --><path d="M164 74 Q156 64 166 56 Q174 48 166 40" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.85"/><path d="M202 68 Q194 58 204 50 Q212 42 204 34" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.85"/><path d="M240 74 Q232 64 242 56 Q250 48 242 40" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.85"/></svg>`,
+};
+function artSvg(id){
+  // Built-in picture, drawn straight into the page (always shows). Ids are made unique per item.
+  return (foodArt[id] || '')
+    .replace('<svg ', '<svg preserveAspectRatio="xMidYMid slice" ')
+    .replace(/id="(\w+)"/g, 'id="' + id + '-$1"')
+    .replace(/url\(#(\w+)\)/g, 'url(#' + id + '-$1)');
+}
+
+const WHATSAPP_NUMBER = '923106396034';
+const STOCK_KEY = 'db_stock_status';
+const ADMIN_KEY = 'db_admin_logged_in';
+const ADMIN_PASSWORD = '12788312';
+
+/* ---------------- STOCK STATE ---------------- */
+function defaultStock(){
+  const fresh = {};
+  menuItems.forEach(i => fresh[i.id] = true); // true = in stock
+  return fresh;
+}
+
+function loadLocalStock(){
+  const saved = localStorage.getItem(STOCK_KEY);
+  if(saved){
+    try{ return Object.assign(defaultStock(), JSON.parse(saved)); }catch(e){}
+  }
+  const fresh = defaultStock();
+  localStorage.setItem(STOCK_KEY, JSON.stringify(fresh));
+  return fresh;
+}
+
+let stockStatus = loadLocalStock();
+
+function saveStock(){
+  localStorage.setItem(STOCK_KEY, JSON.stringify(stockStatus));
+  if (firebaseIsConfigured && dbRef && firebaseSet) {
+    firebaseSet(dbRef, stockStatus).catch(e => console.warn("Firebase sync failed:", e));
+  }
+}
+
+function setSyncStatusLabel(){
+  const el = document.getElementById('syncStatus');
+  if(!el) return;
+  if(firebaseIsConfigured && dbRef){
+    el.textContent = '🟢 Live sync ON (secure login) — changes reflect for every customer instantly.';
+    el.classList.add('on');
+  } else {
+    el.textContent = '🟡 Live sync OFF — changes only show on this device.';
+    el.classList.remove('on');
+  }
+}
+
+/* ---------------- WHATSAPP ORDER ---------------- */
+function orderViaWhatsapp(name, price){
+  const message = `Hello I want to order ${name} for Rs. ${price} from Delicious Bites Pakpattan`;
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
+function handleOrderClick(item){
+  if(!stockStatus[item.id]) return; // out of stock guard
+
+  if(typeof fbq !== 'undefined'){
+    fbq('track', 'AddToCart', { content_name: item.name, value: item.price, currency: 'PKR' });
+    fbq('track', 'InitiateCheckout', { content_name: item.name, value: item.price, currency: 'PKR' });
+  }
+
+  orderViaWhatsapp(item.name, item.price);
+}
+
+/* ---------------- RENDER MENU ---------------- */
+function renderMenu(){
+  const grid = document.getElementById('menuGrid');
+  grid.innerHTML = '';
+  menuItems.forEach(item => {
+    const inStock = stockStatus[item.id];
+    const card = document.createElement('div');
+    card.className = 'food-card';
+    card.innerHTML = `
+      <div class="food-img-wrap ${inStock ? '' : 'faded'}">
+        <div class="art">${artSvg(item.id)}</div>
+        ${item.img ? `<img class="photo" src="${item.img}" alt="${item.name}" onload="this.style.opacity=1" onerror="this.remove()">` : ''}
+        ${inStock ? '' : '<span class="stock-badge">OUT OF STOCK</span>'}
+      </div>
+      <div class="food-body">
+        <h3>${item.name}</h3>
+        <p class="food-price">Rs. ${item.price}</p>
+        <button class="order-btn" data-id="${item.id}" ${inStock ? '' : 'disabled'}>
+          🛵 Order Now
+        </button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  grid.querySelectorAll('.order-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = menuItems.find(i => i.id === btn.dataset.id);
+      handleOrderClick(item);
+    });
+  });
+}
+
+/* Menu foran dikhao (Firebase ka intezar nahi) */
+try { renderMenu(); } catch(e) { console.error('renderMenu failed', e); }
+
+initFirebaseIfConfigured(function(){
+
+renderMenu();
+
+/* ---------------- ADMIN PANEL ---------------- */
+const adminBox = document.getElementById('adminBox');
+const adminPanel = document.getElementById('adminPanel');
+const adminMsg = document.getElementById('adminMsg');
+const adminItemsList = document.getElementById('adminItemsList');
+
+function renderAdminList(){
+  adminItemsList.innerHTML = '';
+  menuItems.forEach(item => {
+    const inStock = stockStatus[item.id];
+    const row = document.createElement('div');
+    row.className = 'admin-row';
+    row.innerHTML = `
+      <div class="item-name">${item.name}<small>Rs. ${item.price}</small></div>
+      <button class="toggle-btn ${inStock ? '' : 'out'}" data-id="${item.id}">
+        ${inStock ? 'Mark Out of Stock' : 'Mark In Stock'}
+      </button>
+    `;
+    adminItemsList.appendChild(row);
+  });
+
+  adminItemsList.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      stockStatus[id] = !stockStatus[id];
+      saveStock();
+      renderAdminList();
+      renderMenu();
+    });
+  });
+}
+
+function showAdminPanel(){
+  adminBox.style.display = 'none';
+  adminPanel.classList.add('show');
+  setSyncStatusLabel();
+  renderAdminList();
+}
+
+function hideAdminPanel(){
+  adminPanel.classList.remove('show');
+  adminBox.style.display = 'block';
+  document.getElementById('adminPassword').value = '';
+  adminMsg.textContent = '';
+}
+
+if (firebaseIsConfigured && firebaseAuth && firebaseOnAuthStateChanged) {
+  firebaseOnAuthStateChanged(firebaseAuth, (user) => {
+    if (user && user.uid === ADMIN_UID) {
+      showAdminPanel();
+    } else {
+      hideAdminPanel();
+    }
+  });
+} else if (localStorage.getItem(ADMIN_KEY) === 'true') {
+  // Fallback (Firebase not reachable): old local-only behaviour
+  showAdminPanel();
+}
+
+document.getElementById('adminLoginBtn').addEventListener('click', async () => {
+  const entered = document.getElementById('adminPassword').value;
+
+  if (firebaseIsConfigured && firebaseAuth && firebaseSignIn) {
+    adminMsg.textContent = 'Checking...';
+    adminMsg.className = 'admin-msg';
+    try {
+      await firebaseSignIn(firebaseAuth, ADMIN_EMAIL, entered);
+      adminMsg.textContent = '';
+      // showAdminPanel() will fire automatically via onAuthStateChanged
+    } catch (e) {
+      adminMsg.textContent = 'Incorrect password. Try again.';
+      adminMsg.className = 'admin-msg error';
+    }
+    return;
+  }
+
+  // Fallback if Firebase Auth didn't load (e.g. no internet)
+  if (entered === ADMIN_PASSWORD) {
+    localStorage.setItem(ADMIN_KEY, 'true');
+    adminMsg.textContent = '';
+    showAdminPanel();
+  } else {
+    adminMsg.textContent = 'Incorrect password. Try again.';
+    adminMsg.className = 'admin-msg error';
+  }
+});
+
+document.getElementById('adminPassword').addEventListener('keypress', (e) => {
+  if(e.key === 'Enter') document.getElementById('adminLoginBtn').click();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  if (firebaseIsConfigured && firebaseAuth && firebaseSignOut) {
+    firebaseSignOut(firebaseAuth);
+  }
+  localStorage.removeItem(ADMIN_KEY);
+  hideAdminPanel();
+});
+
+/* ---------------- LIVE SYNC LISTENER (only active if Firebase configured) ---------------- */
+if (firebaseIsConfigured && dbRef && firebaseOnValue) {
+  firebaseOnValue(dbRef, (snapshot) => {
+    const cloudData = snapshot.val();
+    if (cloudData) {
+      stockStatus = Object.assign(defaultStock(), cloudData);
+    } else {
+      stockStatus = defaultStock();
+      firebaseSet(dbRef, stockStatus).catch(()=>{});
+    }
+    localStorage.setItem(STOCK_KEY, JSON.stringify(stockStatus));
+    renderMenu();
+    if (adminPanel.classList.contains('show')) renderAdminList();
+  });
+}
+
+}); // end initFirebaseIfConfigured callback
+
+/* ---------------- NAVBAR SCROLL + MOBILE TOGGLE ---------------- */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ---------------- META PIXEL: HERO ORDER NOW -> Lead ---------------- */
+document.getElementById('heroOrderBtn').addEventListener('click', () => {
+  if(typeof fbq !== 'undefined') fbq('track', 'Lead');
+});
+
+/* ---------------- META PIXEL: ViewContent on scroll to menu ---------------- */
+let viewContentFired = false;
+const menuSection = document.getElementById('menu');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting && !viewContentFired){
+      viewContentFired = true;
+      if(typeof fbq !== 'undefined') fbq('track', 'ViewContent');
+    }
+  });
+}, { threshold: 0.3 });
+observer.observe(menuSection);
+
+/* ---------------- META PIXEL: Contact (WhatsApp footer + floating btn) ---------------- */
+function goToWhatsappGeneral(){
+  const message = `Hello, I want to place an order from Delicious Bites Pakpattan`;
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
+document.getElementById('footerWaBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  if(typeof fbq !== 'undefined') fbq('track', 'Contact');
+  goToWhatsappGeneral();
+});
+
+document.getElementById('floatWaBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  if(typeof fbq !== 'undefined') fbq('track', 'Contact');
+  goToWhatsappGeneral();
+});
+
+/* ---------------- META PIXEL: CompleteRegistration on social icon click ---------------- */
+document.querySelectorAll('.social-icon').forEach(icon => {
+  icon.addEventListener('click', () => {
+    if(typeof fbq !== 'undefined') fbq('track', 'CompleteRegistration');
+  });
+});
+
+/* ---------------- META PIXEL: Purchase event (add to your Thank You page) ---------------- */
+// fbq('track', 'Purchase', {value: 0.00, currency: 'PKR'});
+</script>
+</body>
+</html>
